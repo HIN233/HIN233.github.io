@@ -1,55 +1,43 @@
 {
   "site": {
-    "url": "https://drowsyindra.github.io",
-    "title": "博客",
+    "url": "https://HIN233.github.io",
+    "title": "Blogs",
     "description": "这是一个有理想的人走过的漫长道路",
-    "keywords": "Kunyi,blog,dream,indra,博客,逐梦",
+    "keywords": "HIN,blog,explore",
     "lang": "zh-CN",
     "favicon": "/favicon.ico",
     "appleTouchIcon": "/apple-touch-icon.png"
   },
   "author": {
-    "name": "Kunyi",
-    "twitterId": "@lxchapu",
+    "name": "HIN",
+    "twitterId": "🎵Never gonna give you up🎵",
     "avatar": "/img/avatar.jpg"
   },
   "hero": {
-    "name": "Kunyi",
-    "bio": "一个为理想痴狂实干的疯子",
-    "description": "理想是追随稚晖君,欢迎一同学习",
+    "name": "HIN",
+    "bio": "一个不断探索世界的游荡者",
+    "description": "Undescribable",
     "socials": [
       {
         "name": "Github",
         "icon": "icon-github",
-        "url": "https://github.com/drowsyindra",
+        "url": "https://github.com/HIN233",
         "color": "rgb(239, 70, 107)"
       },
       {
         "name": "bilibili",
         "icon": "icon-bilibili",
-        "url": "https://space.bilibili.com/3546706348084176",
+        "url": "https://space.bilibili.com/372252689",
         "color": "rgb(245, 154, 155)"
       },
       {
         "name": "Email",
         "icon": "icon-mail",
-        "url": "mailto:1162137506@qq.com",
+        "url": "mailto:1692736302@qq.com",
         "color": "rgb(150, 215, 201)"
-      },
-      {
-        "name": "Zhihu",
-        "icon": "icon-zhihu",
-        "url": "https://www.zhihu.com/people/wen-dao-81-2-70",
-        "color": "rgb(42, 147, 213)"
-      },
-      {
-        "name": "X",
-        "icon": "icon-x",
-        "url": "https://x.com/kunyi68226",
-        "color": "rgb(106,90,205)"
       }
     ],
-    "yiyan": "装作一个白日梦想家，然后征服全世界。"
+    "yiyan": "妈妈说生活别太执着，也别执着不要执着"
   },
   "color": {
     "accent": [
@@ -107,7 +95,7 @@
     "perPage": 10
   },
   "footer": {
-    "startTime": "2024-07-29T00:00:00Z"
+    "startTime": "2024-11-28T00:00:00Z"
   },
   "docSearch": {
     "appId": "",
@@ -115,10 +103,10 @@
     "indexName": ""
   },
   "waline": {
-    "serverURL": "https://waline-1-t8619760.deta.app/"
+    "serverURL": "https://waline/"
   },
   "sponsor": {
-    "wechat": "https://s2.loli.net/2024/08/03/6lXu4rHghkCmofV.jpg"
+    "wechat": "Sponsor.picture"
   },
   "analytics": {
     "enable": false,
