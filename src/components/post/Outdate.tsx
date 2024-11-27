@@ -7,7 +7,7 @@ export function Outdate({ lastMod }: { lastMod: Date }) {
 
   useEffect(() => {
     const diffDays = getDiffInDays(lastMod)
-    if (diffDays > 30) {
+    if (diffDays > 90) {
       setIsShow(true)
     }
   }, [lastMod])
