@@ -3,10 +3,8 @@ title: Learn Markdown the Hard Way
 date: 2024-11-27
 summary: 对Markdown最基础的介绍，快速上手MD
 category: 电子扫盲课
-tags: [Markdown, 教程笔记]
+tags: [教程笔记, Markdown]
 ---
-
-[TOC]
 
 ## Title
 
@@ -67,18 +65,18 @@ tags: [Markdown, 教程笔记]
 
 使用 `` ` `` 包裹代码
 
-若想创建代码块，在代码开头使用一个空白行并每一行Code前加入一个缩进，如
+若想创建代码块，在代码开头使用一个空白行并每一行Code前加入一个缩进，例如
 
-    #include<stdio.h>
-    int main (void){
-        printf("Hello world!\n");
-        return 0;
+    Your code
+
+在块首和块莫分别使用三个波浪号` ``` `创建代码块则无需缩进
+
+```c
+#include<stdio.h>
+int main (void){
+    printf("Hello world!\n");
+    return 0;
     }
-
-在块首和块莫分别使用三个波浪号创建代码块则无需缩进
-
-```
-Your Code
 ```
 
 ## Horizontal Rule
