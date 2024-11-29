@@ -8,7 +8,7 @@ comments: false
 
 HIN，浙江人，来到上海读书，统计学与计算机科学专业。
 
-## 关于 Gyoza 与 Author
+## 关于 Gyoza 与 Designer
 
 Gyoza 是一个使用 Astro 和 React 开发的博客主题。Gyoza 借鉴了 [Shiro](https://github.com/innei/Shiro) 和一些网站的设计。
 
@@ -19,7 +19,7 @@ Gyoza 的核心理念是简洁，快速，可爱。
 
 Gyoza 是开源的，如果你对这个项目感兴趣，欢迎前往 Gyoza 的 [Github 仓库](https://github.com/lxchapu/astro-gyoza) 来提 Issue 或者 PR。
 
-Author: lxchapu，是一名前端开发者，喜欢各种有趣的东西。欢迎访问我的个人网站 [www.lxchapu.com](https://www.lxchapu.com)，了解关于我更多的信息。
+Designer: lxchapu，是一名前端开发者，喜欢各种有趣的东西。欢迎访问我的个人网站 [www.lxchapu.com](https://www.lxchapu.com)，了解关于我更多的信息。
 
 ## 致谢
 
