@@ -1,6 +1,6 @@
 ---
 title: Learn Git the Hard Way
-date: 2024-11-27
+date: 2024-11-30
 summary: 对Git最基础的介绍，快速上手Git
 category: 电子扫盲课
 tags: [教程笔记, Git]
@@ -61,6 +61,10 @@ After the remote update
 
 1. `git branch -d <your own branch name>` delete local branch
 2. `git pull <remote repository name> master(main)` get the latest version
+
+---
+
+The following are basically scattered notes, mainly for personal use.
 
 ## Commands
 
