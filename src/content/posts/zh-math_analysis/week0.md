@@ -1,7 +1,7 @@
 ---
 title: 数学分析习题1
 date: 2024-12-04
-summary: 数学分析函数习题（一），主要训练举反例、计算的能力
+summary: 数学分析函数习题（一），主要训练举反例、计算、证明的能力
 category: 习题
 tags: [数学分析, 习题, 函数]
 ---
@@ -51,7 +51,9 @@ Features:
 9. $\lim \limits_{x\rightarrow \infty}(\frac{2}{\pi}\arctan x)^x$.
 10. $\lim \limits_{x\rightarrow 1}(1-x)\tan (\frac{\pi}{2}x)$.
 11. 设 $a_1,a_2,\dots ,a_n$ 为正数, $n\geq 2$ , $f(x)=(\frac{a_1^x+a_2^x+\dots +a_n^x}{n})^{\frac{1}{x}}$ ,求 $\lim \limits_{x\rightarrow 0}f(x)$.
+
     用等价量代换方法计算下列极限:
+
 12. $\lim \limits_{x \rightarrow 0}\frac{\ln (\sin^2 x+e^x)-x}{\ln (x^2+e^{2x})-2x}$.
 13. $\lim \limits_{x \rightarrow 0}\frac{\sqrt{(\cos x)}-\sqrt[3]{(\cos x)}}{\sin ^2x}$.
 14. $\lim \limits_{x \rightarrow 0}\frac{(3+2\sin x)^x-3^x}{\tan ^2 x}$.
