@@ -24,3 +24,4 @@ pnpm-debug.log*
 .idea/
 
 /src/content/posts/zh-math_analysis/lib
+hide
