@@ -17,8 +17,7 @@ tags: [RNA-seq, biology]
 |Number of read per cell|100-**1000 million** reads|5000-10000 reads|
 |Sequencing|**Full**-length(96 cells)|3'-end|
 
-sc-seq tech development
-![roadmap](../Figures/sc-seq.png 'Svensson, V., Vento-Tormo, R. & Teichmann, S. Exponential scaling of single-cell RNA-seq in the past decade. Nat Protoc 13, 599–604 (2018). https://doi.org/10.1038/nprot.2017.149')
+![sc-seq tech development](https://s2.loli.net/2025/03/01/TjgcHCE5JBfXpan.png 'Svensson, V., Vento-Tormo, R. & Teichmann, S. Exponential scaling of single-cell RNA-seq in the past decade. Nat Protoc 13, 599–604 (2018). https://doi.org/10.1038/nprot.2017.149')
 
 # scRNA-seq data analysis
 
