@@ -29,11 +29,11 @@ Source: [Single-cell best practices](https://www.sc-best-practices.org/preamble.
 
 Basic Parts: **Data Pre-processing + Downstream Analysis**
 
-## Pre-processing
+## 1 Pre-processing
 
 Pre-processing Workflow: Quality control -> Clustering & batch correction -> Cell type annotation
 
-### Quality control
+### 1.1 Quality control
 
 Data acquisition 上游：比对 -> 去重 -> 定量 -> 得到(m genes,n cells)稀疏矩阵
 
@@ -47,7 +47,7 @@ Data acquisition 上游：比对 -> 去重 -> 定量 -> 得到(m genes,n cells)�
 
 阈值要视情况而定 中位数 +/- n倍标准差
 
-### Before Clustering
+### 1.2 Before Clustering
 
 聚类分析前的处理:
 
@@ -56,7 +56,7 @@ Data acquisition 上游：比对 -> 去重 -> 定量 -> 得到(m genes,n cells)�
 3. Scale Data
 4. PCA
 
-#### Normalization
+#### 1.2.1 Normalization
 
 原因: 不同样本之间文库大小有差异，无法通过基因在不同样本间的表达量来比较表达程度的大小。**测序深度**(测序得到的碱基总量与基因组大小的比值)不同。
 
@@ -68,42 +68,42 @@ $$
 
 Notes: $10^6$: Size factor
 
-#### Find Variable Features
+#### 1.2.2 Find Variable Features
 
 原因: 找到哪些基因对于细胞的聚类分析最没有用(类似管家基因?) 通过在不同类型细胞间表达量**变异程度高**的基因，这有利于区别细胞
 
 Basic idea: 基于方差排序，选择方差高的基因作为后续分析的基因 HVGs
 
-#### Scale Data
+#### 1.2.3 Scale Data
 
 操作：把 HVGs 在细胞间的表达缩放到均值为0，方差为1的正态分布。
 
 目的：为下游PCA服务；给予每个基因相同的权重
 
-#### PCA 主成分分析
+#### 1.2.4 PCA 主成分分析
 
 将 HVGs 的信息继续浓缩得到主要影响的成分，再去除后面的一些主成分(可能是没有生物学意义的一些主成分)
 
-### Clustering
+### 1.3 Clustering
 
 方法: SNN(shared Nearest Neighbor)
 缺点: 基于PCA空间的分簇，簇之间的轮廓不明显
 
 可视化效果：通过非线性降维把几十个PCA空间降维到2个维度。常用方法 t-SNE 和 **UMAP** (前者簇间界限更清晰，后者能展现细胞间状态的连续变化)
 
-### Batch correction
+### 1.4 Batch correction
 
 批次效应可能导致簇的结果不具有生物学意义。
 
 批次效应严重时，各消除批次效应工具表现不一实际处理数据时，应多尝试不同工具的表现。
 
-### Cell type annotation
+### 1.5 Cell type annotation
 
 方法: 手动注释(查阅文献); 自动注释
 
 实际注释时，最好考虑自动+手动
 
-## Downstream Analysis
+## 2 Downstream Analysis
 
 常用分析方法:
 
