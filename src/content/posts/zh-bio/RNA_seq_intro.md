@@ -33,7 +33,7 @@ Basic Parts: **Data Pre-processing + Downstream Analysis**
 
 Pre-processing Workflow: Quality control -> Clustering & batch correction -> Cell type annotation
 
-### 1.1 Quality control
+### 1.1 Quality Control (QC metrics)
 
 Data acquisition 上游：比对 -> 去重 -> 定量 -> 得到(m genes,n cells)稀疏矩阵
 
@@ -83,6 +83,43 @@ Basic idea: 基于方差排序，选择方差高的基因作为后续分析的�
 #### 1.2.4 PCA 主成分分析
 
 将 HVGs 的信息继续浓缩得到主要影响的成分，再去除后面的一些主成分(可能是没有生物学意义的一些主成分)
+
+##### Visualization
+
+1. `VizDimLoadings(pbmc, dims = 1:2, reduction = "pca")`
+
+[pca_viz-1](https://s2.loli.net/2025/03/07/GdSF5oTsawWV8qc.png)
+
+此函数显示PCA载荷图，展示:
+
+- 对前两个主成分贡献最大的基因
+- 每个基因对主成分的贡献程度（正/负相关）
+
+这有助于理解哪些基因驱动了细胞间的主要变异。
+
+2. `DimPlot(pbmc, reduction = "pca") + NoLegend()`
+
+[pca_viz-2](https://s2.loli.net/2025/03/07/zr5mIXj82pVfZDH.png)
+
+此函数绘制PCA散点图，显示:
+
+- 每个细胞在PCA降维空间中的位置（通常是前两个主成分）
+- 细胞之间的相对关系和潜在聚类
+- `+ NoLegend()`部分移除了图例以简化视觉效果
+
+这帮助你了解数据中是否存在明显的细胞群体结构。
+
+3. `DimHeatmap(pbmc, dims = 1, cells = 500, balanced = TRUE)`
+
+[heatmap](https://s2.loli.net/2025/03/07/apqNiQFwP4WyGAM.png)
+
+此函数创建热图，展示:
+
+- 第一个主成分的热图表示
+- 仅包含500个细胞（随机选择或基于PCA值排序）
+- `balanced = TRUE`确保选择在主成分两端的细胞
+
+这可以帮助识别与特定主成分相关的基因表达模式。
 
 ### 1.3 Clustering
 
