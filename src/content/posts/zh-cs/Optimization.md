@@ -29,7 +29,7 @@ In practice: Always use analytic gradient, but check implementation with numeric
 
 ![optimization.png](https://s2.loli.net/2025/03/09/syMHt3J8fEW4LgQ.png 'Overview')
 
-## Vanilla Gradient Descent (GD)
+### Vanilla Gradient Descent (GD)
 
 Iteratively step in the direction of the negative gradient (direction of local steepest descent)
 
@@ -46,7 +46,7 @@ Hyperparameters:
 - Learning rate
 - Number of steps
 
-## Stochastic Gradient Descent (SGD)
+### Stochastic Gradient Descent (SGD)
 
 ```python
 w = initial_weight()
@@ -72,7 +72,7 @@ Problems:
 - Stop at _local minimum_ or **saddle point**
 - 可能有很大的噪声干扰
 
-## SGD + Momentum
+### SGD + Momentum
 
 Combine gradient at current point with velocity to get step used to update weights
 
@@ -102,7 +102,7 @@ for _ in range(n_steps):
     w += v
 ```
 
-## Nestrov Accelerated Gradient (NAG)
+### Nestrov Accelerated Gradient (NAG)
 
 “Look ahead” to the point where updating using velocity would take us; compute gradient there and mix it with velocity to get actual update direction
 
@@ -133,7 +133,7 @@ $$or = \widetilde{x}_t + (\alpha \rho - \rho + \rho^2) v_t - (\alpha+\rho)\nabla
 
 In my opinion, the difference between Momentum and NAG is that NAG **drops the volume of the velocity at current point**, and **turns up the volume of gradient**, which is the reason of NAG "looks ahead" from the perspective of discrete data.
 
-## AdaGrad
+### AdaGrad
 
 Added element-wise scaling of the gradient based on the historical sum of squares in each dimension
 “Per-parameter learning rates” or “**adaptive learning rates**”
@@ -146,7 +146,7 @@ for _ in range(n_steps):
     w -= learning_rate * dw / (sqrt(cache) + epsilon)
 ```
 
-## RMSProp: “Leaky Adagrad”
+### RMSProp: “Leaky Adagrad”
 
 ```python
 cache = 0
@@ -156,7 +156,7 @@ for _ in range(n_steps):
     w -= learning_rate * dw / (sqrt(cache) + epsilon)
 ```
 
-## Adam: RMSProp + Momentum
+### Adam: RMSProp + Momentum
 
 ```python
 moment1 = 0
@@ -174,7 +174,7 @@ for t in range(1, n_steps + 1):
 
 Adam with beta1 = 0.9,beta2 = 0.999, and learning_rate = 1e-3, 5e-4, 1e-4 is a great starting point for many models!
 
-## L2 Regularization vs Weight Decay
+### L2 Regularization vs Weight Decay
 
 L2 regularization:
 $$\mathcal{L} = \mathcal{L}_{\text{data}} + \lambda |w|^2$$
@@ -191,13 +191,13 @@ $$ w\_{t+1} = w_t - \alpha s_t$$
 L2 Regularization and Weight Decay are **equivalent** for **SGD, SGD+Momentum** so people often use the terms interchangeably!
 But they are not the same for **adaptive methods** (AdaGrad, RMSProp, Adam, etc)
 
-## AdamW: Decoupled Weight Decay
+### AdamW: Decoupled Weight Decay
 
 ![AdamW.png](https://s2.loli.net/2025/03/09/Yk9fZhgAMUdc3xj.png)
 
 AdamW should probably be your “default” optimizer for new problems
 
-## Second-Order Optimization
+### Second-Order Optimization
 
 1. Use gradient and Hessian to make quadratic approximation
 2. Step to minimize the approximation
