@@ -76,8 +76,13 @@ Problems:
 
 Combine gradient at current point with velocity to get step used to update weights
 
-$$v_{t+1} = \rho v_t + \nabla f(x_t)$$
-$$x_{t+1} = x_t - \alpha v_{t+1}$$
+$$
+v_{t+1} = \rho v_t + \nabla f(x_t)
+$$
+
+$$
+x_{t+1} = x_t - \alpha v_{t+1}
+$$
 
 ```python
 v = 0
@@ -91,8 +96,13 @@ Rho gives “friction”; typically rho=0.9 or 0.99
 
 Different way (but they are equivalent - give same sequence of x):
 
-$$v_{t+1} = \rho v_t - \alpha f(x_t)$$
-$$x_{t+1} = x_t + v_{t+1}$$
+$$
+v_{t+1} = \rho v_t - \alpha f(x_t)
+$$
+
+$$
+x_{t+1} = x_t + v_{t+1}
+$$
 
 ```python
 v = 0
@@ -106,13 +116,33 @@ for _ in range(n_steps):
 
 “Look ahead” to the point where updating using velocity would take us; compute gradient there and mix it with velocity to get actual update direction
 
-$$v_{t+1} = \rho v_t - \alpha \nabla f(x_t + \rho v_t)$$
-$$x_{t+1} = x_t + v_{t+1}$$
-$\Rightarrow (\widetilde{x}_t = x_t + \rho v_t) \Rightarrow $
-$$v_{t+1} = \rho v_t - \alpha \nabla f(\widetilde{x}_t)$$
-$$\widetilde{x}_{t+1} - \rho v_{t+1} = \widetilde{x}_t - \rho v_t +v_{t+1} $$
-$$\rightarrow \widetilde{x}_{t+1} = \widetilde{x}_t + v_{t+1} + \rho (\widetilde{x}_{t+1} - \widetilde{x}_t) \quad \star$$
-$$or = \widetilde{x}_t + \rho^2 v_t - (1+\rho)\alpha \nabla f(\widetilde{x}_t)$$
+$$
+v_{t+1} = \rho v_t - \alpha \nabla f(x_t + \rho v_t)
+$$
+
+$$
+x_{t+1} = x_t + v_{t+1}
+$$
+
+$$
+\Rightarrow (\widetilde{x}_t = x_t + \rho v_t) \Rightarrow
+$$
+
+$$
+v_{t+1} = \rho v_t - \alpha \nabla f(\widetilde{x}_t)
+$$
+
+$$
+\widetilde{x}_{t+1} - \rho v_{t+1} = \widetilde{x}_t - \rho v_t +v_{t+1}
+$$
+
+$$
+\rightarrow \widetilde{x}_{t+1} = \widetilde{x}_t + v_{t+1} + \rho (\widetilde{x}_{t+1} - \widetilde{x}_t) \quad \star
+$$
+
+$$
+or = \widetilde{x}_t + \rho^2 v_t - (1+\rho)\alpha \nabla f(\widetilde{x}_t)
+$$
 
 ```python
 v = 0
@@ -123,15 +153,36 @@ for _ in range(n_steps):
     w -=  rho * old_v - (1 + rho) * v
 ```
 
-$$v_{t+1} = \rho v_t - \nabla f(x_t + \rho v_t)$$
-$$x_{t+1} = x_t + \alpha v_{t+1}$$
-$$or = \alpha \rho v_t - \alpha \nabla f(x_t)$$
-$\Rightarrow (\widetilde{x}_t = x_t + \rho v_t) \Rightarrow $
-$$v_{t+1} = \rho v_t - \nabla f(\widetilde{x}_t)$$
-$$\widetilde{x}_{t+1} = \widetilde{x}_t + \alpha v_{t+1} + \rho (\widetilde{x}_{t+1} - \widetilde{x}_t) \quad \star$$
-$$or = \widetilde{x}_t + (\alpha \rho - \rho + \rho^2) v_t - (\alpha+\rho)\nabla f(\widetilde{x}_t)$$
+$$
+v_{t+1} = \rho v_t - \nabla f(x_t + \rho v_t)
+$$
 
-In my opinion, the difference between Momentum and NAG is that NAG **drops the volume of the velocity at current point**, and **turns up the volume of gradient**, which is the reason of NAG "looks ahead" from the perspective of discrete data.
+$$
+x_{t+1} = x_t + \alpha v_{t+1}
+$$
+
+$$
+or = \alpha \rho v_t - \alpha \nabla f(x_t)
+$$
+
+$$
+\Rightarrow (\widetilde{x}_t = x_t + \rho v_t) \Rightarrow
+$$
+
+$$
+v_{t+1} = \rho v_t - \nabla f(\widetilde{x}_t)
+$$
+
+$$
+\widetilde{x}_{t+1} = \widetilde{x}_t + \alpha v_{t+1} + \rho (\widetilde{x}_{t+1} - \widetilde{x}_t) \quad \star
+$$
+
+$$
+or = \widetilde{x}_t + (\alpha \rho - \rho + \rho^2) v_t - (\alpha+\rho)\nabla f(\widetilde{x}_t)
+$$
+
+In
+my opinion, the difference between Momentum and NAG is that NAG **drops the volume of the velocity at current point**, and **turns up the volume of gradient**, which is the reason of NAG "looks ahead" from the perspective of discrete data.
 
 ### AdaGrad
 
@@ -177,16 +228,40 @@ Adam with beta1 = 0.9,beta2 = 0.999, and learning_rate = 1e-3, 5e-4, 1e-4 is a g
 ### L2 Regularization vs Weight Decay
 
 L2 regularization:
-$$\mathcal{L} = \mathcal{L}_{\text{data}} + \lambda |w|^2$$
-$$g_t = \nabla \mathcal{L}(w_t) = \nabla \mathcal{L}_{data} + 2\lambda w_t$$
-$$s_t = optimizer(g_t)$$
-$$ w\_{t+1} = w_t - \alpha s_t$$
+
+$$
+\mathbf{L} = \mathbf{L}_{\text{data}} + \lambda |w|^2
+$$
+
+$$
+g_t = \nabla \mathbf{L}(w_t) = \nabla \mathbf{L}_{data} + 2\lambda w_t
+$$
+
+$$
+s_t = optimizer(g_t)
+$$
+
+$$
+ w\_{t+1} = w_t - \alpha s_t
+$$
 
 Weight decay:
-$$\mathcal{L} = \mathcal{L}_{\text{data}}$$
-$$g_t = \nabla \mathcal{L}_{data}(w_t)$$
-$$s_t = optimizer(g_t)+ 2\lambda w_t$$
-$$ w\_{t+1} = w_t - \alpha s_t$$
+
+$$
+\mathbf{L} = \mathbf{L}_{\text{data}}
+$$
+
+$$
+g_t = \nabla \mathbf{L}_{data}(w_t)
+$$
+
+$$
+s_t = optimizer(g_t)+ 2\lambda w_t
+$$
+
+$$
+ w\_{t+1} = w_t - \alpha s_t
+$$
 
 L2 Regularization and Weight Decay are **equivalent** for **SGD, SGD+Momentum** so people often use the terms interchangeably!
 But they are not the same for **adaptive methods** (AdaGrad, RMSProp, Adam, etc)

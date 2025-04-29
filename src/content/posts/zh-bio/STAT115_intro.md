@@ -6,7 +6,7 @@ category: 生物统计
 tags: [biology]
 ---
 
-# Bioinformatics vs Computational Biology?
+## Bioinformatics vs Computational Biology?
 
 生物信息学生产工具，计算生物学使用工具。
 
