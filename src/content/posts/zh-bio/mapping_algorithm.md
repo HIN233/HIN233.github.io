@@ -33,7 +33,7 @@ Burrows-Wheeler transformation (BWT) 是一种可逆的数据压缩算法，它�
 2. 然后将当前字符串的第一个字符移到最后一位，形成一个新的字符串，再将新的字符串的第一位移到最后一位形成另一个新的字符串，就这样不断循环这个过程，直到字符串循环完毕（即\$处于第一位），这样就形成了一个基于原字符串的字符矩阵M。
 3. 然后对矩阵M的各行字符按照字典先后顺序排序，获得排序后的字符矩阵 BWM(T)，矩阵的最后一列定义为 BWT(T)。
 
-![BWT](Figures/BWT.png)
+![BWT](./Figures/BWT.png)
 
 前期经过一个小复杂的过程获得了BWT(T)列，那这一列到底有什么用呢？其实BWT(T)列通过简单的算法就可以推算出原始文本T的所有信息。而经过转换之后的BWT(T)列大量重复字符是靠近的，只储存该列信息，可以大大提高字符压缩比例。
 
@@ -57,7 +57,7 @@ $$
 $$
 
 其中$\text{LF(i)}$就是从**L**ast列的字符映射到**F**irst列的字符所在行的过程。
-![LF Mapping](Figures/LF_mapping.png)
+![LF Mapping](./Figures/LF_mapping.png)
 
 ## BW Alignment
 
@@ -75,7 +75,7 @@ $$
 
 其中qc是Q（从右到左）中的下一个字符，LF(i, qc)将行i映射到第一个字符qc与i的最后一个字符qc对应的行。
 
-![BWT^-1](Figures/BWTreverse.png)
+![BWT^-1](./Figures/BWTreverse.png)
 
 在逐步迭代的过程中，顶部（top）和底部（bot）界定了一个不断缩小的行范围，这些行以查询字符串Q的逐步加长的后缀（从右到左）开头。
 
