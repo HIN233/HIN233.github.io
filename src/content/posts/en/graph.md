@@ -18,50 +18,50 @@ tags: [writing, graph]
 ## 2. Identify 4 Types of Data
 
 - Focus (title)
-- Broad idea(overall)
+- Broad idea (overall)
 - Major details
 - Minor details
 
 ## 3. First
 
-- The chart/graph/table ...
-- shows/ indicates /illustrates/ reveals/ represents/compares /describes/ outlines/ provides an overview of...
-- It is clear from the chart/graph/table that...
-- It can be seen/noted from the chart/graph/table that...
-- Overall, it's immediately apparent that....
+- **The chart/graph/table** ...
+- **shows** / indicates / **illustrates** / **reveals** / represents /compares / **describes** / outlines / provides an overview of ...
+- It is clear from the chart/graph/table that ...
+- **It can be seen/noted from the chart/graph/table that ...**
+- **Overall, it's immediately apparent that ....**
 - As can be seen from the chart/graph/table, ...
 - As is shown/ illustrated by the chart/graph/table, ...
 
 ## 4. Body (major details+ minor details)
 
 占比+趋势+比较
-Description method: One major + more minors
+**Description method**: One major + more minors
 One major: general trend of changes (rise, fall, fluctuations, etc. )
 More minors: key information
 
 ## 5. Expressions
 
-Data referred to as: the figure, the trend, the data, the number, the value, the amount, the percentage
+**Data referred to as**: the figure, the trend, the data, the number, the value, the amount, the percentage
 
-verb: reach (the high/bottom), **arrive at**, amount to, hit, **stand at**, overtake
+**verb**: **reach** (the high/bottom), **arrive at**, amount to, hit, **stand at**, overtake
 
-rough number: about, around, roughly, approximately, just over, just under
+**rough number**: about, **around**, roughly, **approximately**, just over, just under
 
-Increase: peaked at... (this phrase marks the highest point), topped at... (this phrase marks the highest point), grew to, rocketed to... , jumped to... , swelled to... , rose to, gradually climbed to... , modestly climbed to... , inched to... , crawled to...
+**Increase**: **peaked at**... (this phrase marks the highest point), topped at... (this phrase marks the highest point), grew to, rocketed to... , jumped to... , swelled to... , **rose to**, **gradually climbed to**... , **modestly climbed to**... , inched to... , crawled to..., **surge**
 
-Decrease: dropped to... , fell to... , slid to... , declined to , shrunk to-. , bottomed at... (this phrase marks the lowest point), hit a trough at... (this phrase marks the lowest point), plummet
+**Decrease**: dropped to... , fell to... , **slid to**... , **declined to** , shrunk to... , bottomed at... (this phrase marks the lowest point), hit a trough at... (this phrase marks the lowest point), plummet
 
-Unchanging state: maintained a value of... , went without change for... , stabilized at, remained stable, held steady at... , reached a plateau of , level off
+**Unchanging state**: maintained a value of... , went without change for... , stabilized at, **remained stable**, held steady at... , **reached a plateau of** , **level off**, **hover**
 
-Volatile state: experienced volatility for..., unstable figures between A and B, the figures became turbulent, jumped back and forth erratically, **fluctuate**
+**Volatile state**: **experienced volatility for**..., unstable figures between A and B, the figures became turbulent, jumped back and forth erratically, **fluctuate**
 
-Speed: sharp, rapid, dramatic, drastic, significant, substantial, marked, remarkable, gradual, slow, steady, gentle, slight, modest, moderate
+**Speed**: **sharp**, **rapid**, **dramatic**, drastic, **significant**, **substantial**, marked, **remarkable**, **gradual**, slow, steady, gentle, slight, modest, **moderate**
 
-Describing majority: the lion's share of..., the vast majority..., by far the most..., has a slight majority
+**Describing majority**: the lion's share of..., the vast majority..., by far the most..., has a slight majority
 
-Describing minority/ insignificancy: a small stake, holds a rather miniscule share, makes up an insignificant part, is rather negligible, next to none
+**Describing minority/ insignificancy**: **a small stake**, holds a rather miniscule share, **makes up an insignificant part**, **is rather negligible**, next to none
 
-1. 超过; surpass, outnumber, exceed
+1. 超过：surpass, outnumber, exceed
    Eg.美国跑步者的数量呈现急剧的增长形势，超过了中国的数量。
 
 2. 紧跟：follow
@@ -95,7 +95,7 @@ Eg. 大多数企业的收入与其广告预算成正比。
 ## 6. Sentences
 
 - 主体 show alan +adj +n.(+时间)
-  The number/percentage(of ...)showed a (upward/downward) trend from... to ...
+  The number/percentage (of ...) showed a (upward/downward) trend from... to ...
 
 - There be +a/an+adj+n.+in 数据+时间
   There is a + 上升/下降 in the number of.../over the period of...
@@ -106,7 +106,7 @@ e.g.
 
 - There was a moderate increase from 10% to 25% with some slight fluctuations during 20 years from ...to ....
 
-- The ...stayed at approximately ...with some fluctuations from ... to ....
+- The ... stayed at approximately ... with some fluctuations from ... to ....
 
 - The percentage of ... went up sharply from 10% during the early few years between 1960 and 1970 and it leveled off at 25% until 1980.
 
