@@ -40,35 +40,41 @@ sbatch cpu.sh
 ```bash
 #!/bin/bash
 
-#SBATCH --job-name=hostname
-#SBATCH --partition=cpu
-#SBATCH -N 1
-#SBATCH --mail-type=end
-#SBATCH --mail-user=YOU@EMAIL.COM
-#SBATCH --output=%j.out
-#SBATCH --error=%j.err
+#SBATCH --job-name=作业名称
+#SBATCH -D /share/home/用户名
+#SBATCH -o job.%j.out
+#SBATCH -e job.%j.err
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --gres=gpu:0 #需要GPU计算，更改gpu:0中的0为其他数值
+#SBATCH --mem=2G
+#SBATCH --time=7-0:00
+#SBATCH --partition=compute #指定分区
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=指定的邮箱
 
 /bin/hostname
 ```
 
 以下是常用的参数：
 
-| 参数                         | 含义               |
-| ---------------------------- | ------------------ |
-| `-n [count]`                 | 总进程数           |
-| `--ntasks-per-node=[count]`  | 每台节点上的进程数 |
-| `-p [partition]`             | 作业队列           |
-| `--job-name=[name]`          | 作业名             |
-| `--output=[file_name]`       | 标准输出文件       |
-| `--error=[file_name]`        | 标准错误文件       |
-| `--time=[dd-hh:mm:ss]`       | 作业最大运行时长   |
-| `--exclusive`                | 独占节点           |
-| `--mail-type=[type]`         | 通知类型           |
-| `--mail-user=[mail_address]` | 通知邮箱           |
-| `--nodelist=[nodes]`         | 偏好的作业节点     |
-| `--exclude=[nodes]`          | 避免的作业节点     |
-| `--depend=[state:job_id]`    | 作业依赖           |
-| `--array=[array_spec]`       | 序列作业           |
+| 参数                                    | 含义               |
+| --------------------------------------- | ------------------ |
+| `-n [count]`                            | 总进程数           |
+| `--ntasks-per-node=[count]`             | 每台节点上的进程数 |
+| `-p [partition]`                        | 作业队列           |
+| `--job-name=[name]`                     | 作业名             |
+| `--output=[file_name]` `-o=[file_name]` | 标准输出文件       |
+| `--error=[file_name]` `-e=[file_name]`  | 标准错误文件       |
+| `-D [work_directory]`                   | 设置设置工作目录   |
+| `--time=[dd-hh:mm:ss]`                  | 作业最大运行时长   |
+| `--exclusive`                           | 独占节点           |
+| `--mail-type=[type]`                    | 通知类型           |
+| `--mail-user=[mail_address]`            | 通知邮箱           |
+| `--nodelist=[nodes]`                    | 偏好的作业节点     |
+| `--exclude=[nodes]`                     | 避免的作业节点     |
+| `--depend=[state:job_id]`               | 作业依赖           |
+| `--array=[array_spec]`                  | 序列作业           |
 
 用以下方式提交作业：
 
@@ -76,7 +82,7 @@ sbatch cpu.sh
 sbatch cpu.slurm
 ```
 
-输出将实时更新到文件[jobid] .out和[jobid] .err。
+输出将实时更新到文件 job.[jobid].out和 job.[jobid].err。
 
 ### 2. salloc 交互式分配
 
@@ -87,7 +93,8 @@ sbatch cpu.slurm
 ```bash
 salloc -p GPU -N1 -n6 --gres=gpu:1 -q low -t 24:00:00
 # salloc 申请成功后会返回申请到的节点和作业ID等信息，假设申请成功后返回的作业号为1078858，申请到的节点是gpu05
-ssh gpu05 # 直接登录到刚刚申请到的节点gpu05上调式作业
+ssh gpu05 # 直接登录到刚刚申请到的节点gpu05上调式作业，应该要输入服务器用户登陆密码
+
 scancel 1078858  # 计算结束后结束任务
 squeue -j 1078858 # 查看作业是否还在运行，确保作业已经退出，避免产生不必要的费用
 ```
@@ -230,6 +237,121 @@ scancel常见参数;
 | `-q <qos>`            | 取消指定QoS的作业                                       |
 | `-t <job_state_name>` | 取消指定状态的作业（"PENDING"、"RUNNING"或"SUSPENDED"） |
 | `-u <user_name>`      | 取消指定用户的作业                                      |
+
+### 访问服务器上的 Jupyter Notebook
+
+首先确认服务器上已经安装并配置好了 Jupyter Notebook。
+
+最好不要在登陆节点运行 Jupyter Notebook 服务，可以通过 Slurm 提交一个作业来运行 Jupyter Notebook 服务。具体方法有两种：
+
+1. 直接使用 `srun` 或 `salloc` 命令切换到计算节点去，然后在计算节点启动Jupyter。
+2. 使用 `sbatch` 提交Jupyter的运行脚本到计算节点，然后再本地链接+访问
+
+#### 方法一
+
+##### 1. 申请计算资源
+
+在**计算**节点上申请GPU计算节点资源：
+
+```bash
+# 申请1个GPU节点，10G内存，1小时时长
+salloc --partition=compute --mem=10G -N1 -n1 --gres=gpu:1 -t 1:00:00 --nodelist=node01
+
+# 如果特定节点不可用，可移除--nodelist参数或尝试其他节点
+salloc --partition=compute --mem=10G -N1 -n1 --gres=gpu:1 -t 1:00:00
+```
+
+##### 2. 连接到计算节点并启动Jupyter
+
+申请成功后，SSH到分配的计算节点：
+
+```bash
+# 查看分配到的节点名称（通常会在salloc输出中显示）
+squeue -u $USER
+
+# 连接到计算节点（替换node01为实际分配节点）
+ssh node01
+
+# 激活Conda环境
+conda activate jupyter
+
+# 启动Jupyter Lab（推荐）或Notebook
+jupyter lab --no-browser --port=9999
+# 或
+jupyter notebook --no-browser --port=9999
+```
+
+##### 3. 本地端口转发
+
+**保持上述SSH连接开启**，打开新的本地终端窗口，建立端口转发：
+
+```bash
+# 通过登录节点跳转到计算节点（替换为您的用户名和登录节点IP）
+ssh -t -L 9999:localhost:9999 [username]@[login_node_ip] "ssh -L 9999:localhost:9999 node01"
+```
+
+##### 4. 浏览器访问
+
+在本地浏览器中访问（替换为实际token）：
+
+```
+http://localhost:9999/lab?token=您的token
+```
+
+token信息会在Jupyter启动输出的日志中找到。
+
+#### 方法二
+
+##### 1. 创建Slurm作业脚本
+
+创建文件`jupyter.sh`：
+
+```bash
+#!/bin/bash
+#SBATCH --job-name=jupyter_lab
+#SBATCH --output=jupyter_%j.log
+#SBATCH --partition=compute
+#SBATCH --gres=gpu:1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=16G
+#SBATCH --time=10:00:00
+
+# 加载必要模块（根据集群配置调整）
+module purge
+module load cuda/11.3
+
+# 激活Conda环境
+conda activate scdiff
+
+# 获取计算节点IP
+echo "计算节点IP: $(hostname -I)"
+
+# 启动Jupyter
+jupyter lab --no-browser --port=9999
+```
+
+### 2. 提交作业并监控
+
+```bash
+# 提交作业
+sbatch jupyter.sh
+
+# 查看作业状态和节点
+squeue -u $USER
+
+# 查看作业日志获取IP和token
+tail -f jupyter_[jobid].log
+```
+
+### 3. 建立隧道连接
+
+作业运行后，从本地终端建立SSH隧道：
+
+```bash
+# 替换为实际的计算节点IP（从作业日志中获取）
+ssh -t -L 9999:localhost:9999 [username]@[login_node_ip] "ssh -L 9999:localhost:9999 [node_name]"
+```
 
 ## References
 
