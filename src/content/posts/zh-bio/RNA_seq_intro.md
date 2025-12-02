@@ -88,7 +88,7 @@ Basic idea: 基于方差排序，选择方差高的基因作为后续分析的�
 
 1. `VizDimLoadings(pbmc, dims = 1:2, reduction = "pca")`
 
-[pca_viz-1](https://s2.loli.net/2025/03/07/GdSF5oTsawWV8qc.png)
+![pca_viz-1](https://s2.loli.net/2025/03/07/GdSF5oTsawWV8qc.png)
 
 此函数显示PCA载荷图，展示:
 
@@ -99,7 +99,7 @@ Basic idea: 基于方差排序，选择方差高的基因作为后续分析的�
 
 2. `DimPlot(pbmc, reduction = "pca") + NoLegend()`
 
-[pca_viz-2](https://s2.loli.net/2025/03/07/zr5mIXj82pVfZDH.png)
+![pca_viz-2](https://s2.loli.net/2025/03/07/zr5mIXj82pVfZDH.png)
 
 此函数绘制PCA散点图，显示:
 
@@ -111,7 +111,7 @@ Basic idea: 基于方差排序，选择方差高的基因作为后续分析的�
 
 3. `DimHeatmap(pbmc, dims = 1, cells = 500, balanced = TRUE)`
 
-[heatmap](https://s2.loli.net/2025/03/07/apqNiQFwP4WyGAM.png)
+![heatmap](https://s2.loli.net/2025/03/07/apqNiQFwP4WyGAM.png)
 
 此函数创建热图，展示:
 
